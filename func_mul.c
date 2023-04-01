@@ -1,22 +1,22 @@
 #include "monty.h"
 /**
- * f_mul - multiplies the top two elements of the stack.
- * @head: stack head
- * @counter: line_number
+ * f_mul - multiplies two elements of stack.
+ * @head: head
+ * @counter: line
  * Return: nothing
 */
 void f_mul(stack_t **head, unsigned int counter)
 {
-	stack_t *h;
-	int len = 0, aux;
+	stack_t *a;
+	int l = 0, b;
 
-	h = *head;
-	while (h)
+	a = *head;
+	while (a)
 	{
-		h = h->next;
-		len++;
+		a = a->next;
+		l++;
 	}
-	if (len < 2)
+	if (l < 2)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
 		fclose(bus.file);
@@ -24,9 +24,9 @@ void f_mul(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	aux = h->next->n * h->n;
-	h->next->n = aux;
-	*head = h->next;
-	free(h);
+	a = *head;
+	b = a->next->n * a->n;
+	a->next->n = b;
+	*head = a->next;
+	free(a);
 }
